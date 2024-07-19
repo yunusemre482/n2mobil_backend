@@ -1,0 +1,6 @@
+/venv
+.idea
+.env.development
+.env.test
+.env.stage
+.env.production
