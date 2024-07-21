@@ -1,11 +1,11 @@
 from django.urls import path, include
-from .routes import user_urls
+from .routes.user_routes import urlpatterns as user_urls
+from .routes.todo_routes import urlpatterns as todo_urls
 
+## add to array of urlpatterns
 urlpatterns = [
-    path('users/', include(user_urls)),
-    #path('users/posts/', include(post.urls)),
-    #path('users/albums/', include(album.urls)),
-    #path('users/todos/', include(todo.urls)),
-    #path('posts/<int:postId>/comments/', include(comment.urls)),
-    #path('albums/<int:albumId>/photos/', include(photo.urls))
+    path('', include(user_urls)),
+    path('', include(todo_urls))
 ]
+
+
