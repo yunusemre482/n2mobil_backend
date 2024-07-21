@@ -4,7 +4,7 @@ from .post_model import Post
 
 class Comment(models.Model):
     id: models.AutoField(primary_key=True)
-    postId = models.ForeignKey(Post, on_delete=models.CASCADE)
+    postId = models.ForeignKey(Post, related_name='posts', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     email = models.EmailField()
     body = models.TextField()

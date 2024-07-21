@@ -1,5 +1,5 @@
 from django.db import models
-from .album import Album
+from .album_model import Album
 
 class Photo(models.Model):
     albumId = models.ForeignKey(Album, on_delete=models.CASCADE)

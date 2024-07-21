@@ -2,18 +2,7 @@ from django.db import models
 
 
 class Geo(models.Model):
-    lat = models.FloatField()
-    lng = models.FloatField()
+    lat = models.CharField(max_length=20) # NOTE : lat double precision NOT NULL,
+    lng = models.CharField(max_length=20) # NOTE   lng double precision NOT NULL, correct version of this code is below
 
-    def __str__(self):
-        return f'{self.lat}, {self.lng}'
 
-    class Meta:
-        verbose_name_plural = "Geos"
-        ordering = ['lat']
-        db_table = 'geo'
-        managed = True
-        abstract = False
-
-    def save(self, *args, **kwargs):
-        super(Geo, self).save(*args, **kwargs)
