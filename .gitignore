@@ -6,3 +6,4 @@
 .env.stage
 .env.production
 .env
+general.log
