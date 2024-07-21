@@ -4,11 +4,21 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - /var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=example
-      - POSTGRES_DB=n_two_mobil
+      - POSTGRES_DB=n2mobile
+
+  postgres_adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
 
 networks:
   postgres_net:
+
+volumes:
+    postgres-data: {}
