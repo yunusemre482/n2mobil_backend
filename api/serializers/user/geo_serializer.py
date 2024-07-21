@@ -8,16 +8,15 @@ class GeoSerializer(serializers.ModelSerializer):
         fields = ['lat', 'lng']
 
     def to_representation(self, instance):
+        representation = super().to_representation(instance)
         return {
-            'lat': instance.lat,
-            'lng': instance.lng
+            'lat': representation.get('lat'),
+            'lng': representation.get('lng')
         }
 
     def to_internal_value(self, data):
+        internal_value = super().to_internal_value(data)
         return {
-            'lat': data['lat'],
-            'lng': data['lng']
+            'lat': internal_value.get('lat'),
+            'lng': internal_value.get('lng')
         }
-
-    def create(self, validated_data):
-        return Geo.objects.create(**validated_data)

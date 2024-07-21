@@ -6,15 +6,13 @@ class TodoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todo
         fields = '__all__'
-        read_only_fields = ('user',)
-
     def create(self, validated_data):
         return Todo.objects.create(**validated_data)
 
     @staticmethod
     def update(instance, validated_data, **kwargs):
-
         instance.title = validated_data.get('title', instance.title)
+        instance.completed = validated_data.get('completed', instance.completed)
 
         ## save the kwargs to the instance
         for key, value in kwargs.items():

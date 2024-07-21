@@ -1,46 +1,34 @@
 from rest_framework import serializers
 from api.models.user import Geo, Address, Company, User
+from api.serializers.user.address_serializer import AddressSerializer
+from api.serializers.user.company_serializer import CompanySerializer
+from django.contrib.auth.hashers import make_password
+
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class UserSerializer(serializers.ModelSerializer):
+    address = AddressSerializer()
+    company = CompanySerializer()
+
     class Meta:
         model = User
         fields = '__all__'
         read_only_fields = ('id',)
-        depth = 3
 
-    @staticmethod
-    def create(validated_data):
-        address_data = validated_data.pop('address')
-        company_data = validated_data.pop('company')
+    ## exculude password from response
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data.pop('password')
+        return data
 
-        geo_data = address_data.pop('geo')
-        geo_instance = Geo.objects.create(**geo_data)
+    def validate_password(self, value: str) -> str:
+        """
+        Hash value passed by user.
 
-        address = Address.objects.create(geo=geo_instance, **address_data)
-        company = Company.objects.create(**company_data)
-
-        user_instance = User.objects.create(address=address, company=company, **validated_data)
-        return user_instance
-
-    @staticmethod
-    def update(instance, validated_data):
-        address_data = validated_data.pop('address')
-        company_data = validated_data.pop('company')
-
-        geo_data = address_data.pop('geo')
-        geo_instance = Geo.objects.create(**geo_data)
-
-        address = Address.objects.create(geo=geo_instance, **address_data)
-        company = Company.objects.create(**company_data)
-
-        instance.name = validated_data.get('name', instance.name)
-        instance.username = validated_data.get('username', instance.username)
-        instance.email = validated_data.get('email', instance.email)
-        instance.phone = validated_data.get('phone', instance.phone)
-        instance.website = validated_data.get('website', instance.website)
-        instance.address = address
-        instance.company = company
-        instance.save()
-        return instance
-
+        :param value: password of a user
+        :return: a hashed version of the password
+        """
+        return make_password(value)
