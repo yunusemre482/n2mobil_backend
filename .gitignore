@@ -1,5 +1,6 @@
 /venv
 .idea
+.env.*
 .env.development
 .env.test
 .env.stage
