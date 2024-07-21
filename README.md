@@ -1,14 +1,14 @@
 Here's the beautified README file for your project:
 
 ```markdown
-# Django REST Framework - API for N2Mobil
+### Django REST Framework - API for N2Mobil
 
-This is a simple API for a mobile phone store, developed using Django REST Framework.
+This is a simple API for user tracking system, developed using Django REST Framework.
 
 ## Getting Started
 
-### Clone the Repository
-```bash
+# Clone the Repository
+
 git clone https://github.com/yunusemre482/n2mobil_backend.git
 ```
 
@@ -87,6 +87,6 @@ You can run the project using Docker Compose or a virtual environment.
     - `/api/todos/` (GET, POST)
     - `/api/todos/<int:pk>/` (GET, PUT, PATCH, DELETE)
 
-## API Documentation
+## API Documentation - (Postman Collection)
 You can find the API documentation at the following link: [API Documentation](https://www.postman.com/yunusemre482/workspace/n2mobile)
 
