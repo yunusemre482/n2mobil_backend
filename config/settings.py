@@ -35,7 +35,8 @@ SECRET_KEY = 'django-insecure-$!8!8pig@i-#k%1sj_(3t%66afcy!u$_x1d+x-75)ioi^ypt!q
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "n2mobil-api.onrender.com"
+    "n2mobil-api.onrender.com",
+    "localhost"
 ]
 
 # Application definition
