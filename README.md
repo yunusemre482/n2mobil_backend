@@ -29,7 +29,7 @@ You can run the project using Docker Compose or a virtual environment.
     ```
 
 3. **Access the PostgreSQL database:**
-    Visit [http://localhost:8080](http://localhost:8080).
+   Visit [http://localhost:8080](http://localhost:8080).
 
 ### Running with Virtual Environment
 
@@ -74,7 +74,8 @@ You can run the project using Docker Compose or a virtual environment.
     ```
 
 8. **Access the admin panel:**
-    Visit [http://localhost:8000/admin/](http://localhost:8000/admin/) and log in with the superuser credentials created in step 6.
+   Visit [http://localhost:8000/admin/](http://localhost:8000/admin/) and log in with the superuser credentials created
+   in step 6.
 
 ## API Endpoints
 
@@ -87,6 +88,16 @@ You can run the project using Docker Compose or a virtual environment.
     - `/api/todos/` (GET, POST)
     - `/api/todos/<int:pk>/` (GET, PUT, PATCH, DELETE)
 
+- **Albums Endpoints:**
+    - `/api/albums/` (GET, POST)
+    - `/api/albums/<int:pk>/` (GET, PUT, PATCH, DELETE)
+
+- **Photos Endpoints:**
+  - `/api/<int:pk>/photos/` (GET, POST)
+  - `/api/<int:pk>/photos/<int:pk>/` (GET, PUT, PATCH, DELETE)
+
 ## API Documentation - (Postman Collection)
-You can find the API documentation at the following link: [API Documentation](https://www.postman.com/yunusemre482/workspace/n2mobile)
+
+You can find the API documentation at the following
+link: [API Documentation](https://www.postman.com/yunusemre482/workspace/n2mobile)
 
