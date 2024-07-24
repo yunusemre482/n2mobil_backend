@@ -17,13 +17,13 @@ from pathlib import Path
 import dj_database_url
 import logging
 import parler
+
 logger = logging.getLogger(__name__)
 
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -35,7 +35,6 @@ SECRET_KEY = 'django-insecure-$!8!8pig@i-#k%1sj_(3t%66afcy!u$_x1d+x-75)ioi^ypt!q
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -82,20 +81,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-
-        'ENGINE': os.environ.get('DB_DRIVER', 'django.db.backends.postgresql'),
-        'NAME': os.environ.get('POSTGRESQL_DB_NAME','n2mobil'),
-        'USER': os.environ.get('POSTGRESQL_DB_USER','root'),
-        'PASSWORD': os.environ.get('POSTGRESQL_DB_PASS','example'),
-        'HOST': os.environ.get('POSTGRESQL_DB_HOST','localhost'),
-        'PORT': os.environ.get('POSTGRESQL_DB_PORT', '5432'),
-    }
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600
+    )
 }
 
 REST_FRAMEWORK = {
@@ -169,14 +163,11 @@ LOGGING = {
     },
 }
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 
-
 LANGUAGE_CODE = 'en-us'
-
 
 # TODO - Uncomment the following code to enable but  translations not implemented yet
 # LANGUAGES = [
@@ -196,7 +187,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
@@ -206,4 +196,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
