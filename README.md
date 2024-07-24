@@ -79,6 +79,17 @@ You can run the project using Docker Compose or a virtual environment.
 
 ## API Endpoints
 
+#### Usage:
+    1.Fist you need to create a user and get the token.
+        - `/api/users/` (GET, POST)
+        - You can create a user with this endpoint.
+        - 'api/auth/login/' (POST)
+        - You can get the token with the username and password.
+        - !IMPORTANT: You dont need to set token with hard code.when you login it will automatically set the token to the environment variables and each routes takes it from environment.
+            
+    2.Then you can use the token to access the other endpoints.
+
+
 - **User Endpoints:**
     - `/api/users/` (GET, POST)
     - `/api/users/user-todos` (GET)
@@ -100,4 +111,6 @@ You can run the project using Docker Compose or a virtual environment.
 
 You can find the API documentation at the following
 link: [API Documentation](https://www.postman.com/yunusemre482/workspace/n2mobile)
+
+
 
