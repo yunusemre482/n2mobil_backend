@@ -11,3 +11,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment by {self.username} on Post {self.postId}"
+
+    def DOES_NOT_EXIST(self):
+        return  Exception("Comment does not exist")

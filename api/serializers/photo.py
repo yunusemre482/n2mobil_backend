@@ -6,7 +6,7 @@ class PhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Photo
         fields = '__all__'
-        read_only_fields = ('album',)
+        read_only_fields = ('album.py',)
 
     def create(self, validated_data):
         return Photo.objects.create(**validated_data)
