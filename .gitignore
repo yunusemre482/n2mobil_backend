@@ -7,3 +7,4 @@
 .env.production
 .env
 general.log
+/staticfiles
