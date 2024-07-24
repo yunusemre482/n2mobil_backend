@@ -34,7 +34,9 @@ SECRET_KEY = 'django-insecure-$!8!8pig@i-#k%1sj_(3t%66afcy!u$_x1d+x-75)ioi^ypt!q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "n2mobil-api.onrender.com"
+]
 
 # Application definition
 
