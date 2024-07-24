@@ -86,11 +86,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        engine='django.db.backends.postgresql',
-        default=os.environ.get('DATABASE_URL'),
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': os.environ.get('DB_DRIVER', 'django.db.backends.postgresql'),
+        'NAME': os.environ.get('POSTGRESQL_DB_NAME', 'n2mobil'),
+        'USER': os.environ.get('POSTGRESQL_DB_USER', 'root'),
+        'PASSWORD': os.environ.get('POSTGRESQL_DB_PASS', 'example'),
+        'HOST': os.environ.get('POSTGRESQL_DB_HOST', 'localhost'),
+        'PORT': os.environ.get('POSTGRESQL_DB_PORT', '5432'),
+
+    }
 }
 
 REST_FRAMEWORK = {
@@ -200,7 +204,6 @@ if not DEBUG:
     # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
     # and renames the files with unique names for each version to support long-term caching
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
